@@ -149,8 +149,8 @@ export default function BirthdayList({ authContext }) {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">🎂 Birthday List</h1>
-            <p className="mt-2 text-gray-600">
+            <h1 className="text-3xl font-bold text-white">🎂 Birthday List</h1>
+            <p className="mt-2 text-gray-300">
               Manage all your tracked birthdays
             </p>
           </div>
@@ -166,17 +166,17 @@ export default function BirthdayList({ authContext }) {
         </div>
 
         {error && (
-          <div className="mb-6 bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md">
+          <div className="mb-6 bg-red-900 border border-red-700 text-red-300 px-4 py-3 rounded-md">
             {error}
           </div>
         )}
 
         {/* Filters and Search */}
-        <div className="bg-white rounded-lg shadow p-6 mb-8">
+        <div className="bg-gray-800 rounded-lg shadow p-6 mb-8 border border-gray-700">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {/* Search */}
             <div>
-              <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="search" className="block text-sm font-medium text-gray-300 mb-1">
                 Search
               </label>
               <input
@@ -185,20 +185,20 @@ export default function BirthdayList({ authContext }) {
                 value={searchTerm}
                 onChange={handleSearchChange}
                 placeholder="Search by name..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
 
             {/* Relationship Filter */}
             <div>
-              <label htmlFor="relationship" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="relationship" className="block text-sm font-medium text-gray-300 mb-1">
                 Relationship
               </label>
               <select
                 id="relationship"
                 value={relationshipFilter}
                 onChange={(e) => handleFilterChange('relationship', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm bg-gray-700 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               >
                 {relationshipOptions.map(option => (
                   <option key={option.value} value={option.value}>
@@ -210,14 +210,14 @@ export default function BirthdayList({ authContext }) {
 
             {/* Sort By */}
             <div>
-              <label htmlFor="sortBy" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="sortBy" className="block text-sm font-medium text-gray-300 mb-1">
                 Sort By
               </label>
               <select
                 id="sortBy"
                 value={sortBy}
                 onChange={(e) => handleFilterChange('sort', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 border border-gray-600 rounded-md shadow-sm bg-gray-700 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               >
                 {sortOptions.map(option => (
                   <option key={option.value} value={option.value}>
@@ -229,7 +229,7 @@ export default function BirthdayList({ authContext }) {
 
             {/* Results Count */}
             <div className="flex items-end">
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-gray-300">
                 {pagination.total ? (
                   <>
                     Showing {((pagination.page - 1) * pagination.limit) + 1} to{' '}
@@ -264,26 +264,26 @@ export default function BirthdayList({ authContext }) {
 
             {/* Pagination */}
             {pagination.pages > 1 && (
-              <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6 rounded-lg shadow">
+              <div className="flex items-center justify-between border-t border-gray-700 bg-gray-800 px-4 py-3 sm:px-6 rounded-lg shadow">
                 <div className="flex flex-1 justify-between sm:hidden">
                   <button
                     onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                     disabled={currentPage === 1}
-                    className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="relative inline-flex items-center rounded-md border border-gray-600 bg-gray-700 px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Previous
                   </button>
                   <button
                     onClick={() => setCurrentPage(Math.min(pagination.pages, currentPage + 1))}
                     disabled={currentPage === pagination.pages}
-                    className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="relative ml-3 inline-flex items-center rounded-md border border-gray-600 bg-gray-700 px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Next
                   </button>
                 </div>
                 <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
                   <div>
-                    <p className="text-sm text-gray-700">
+                    <p className="text-sm text-gray-300">
                       Showing page <span className="font-medium">{pagination.page}</span> of{' '}
                       <span className="font-medium">{pagination.pages}</span>
                     </p>
@@ -293,7 +293,7 @@ export default function BirthdayList({ authContext }) {
                       <button
                         onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                         disabled={currentPage === 1}
-                        className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-600 bg-gray-700 hover:bg-gray-600 focus:z-20 focus:outline-offset-0 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         <span className="sr-only">Previous</span>
                         <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -311,7 +311,7 @@ export default function BirthdayList({ authContext }) {
                             className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${
                               pageNum === currentPage
                                 ? 'z-10 bg-blue-600 text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600'
-                                : 'text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0'
+                                : 'text-gray-300 ring-1 ring-inset ring-gray-600 bg-gray-700 hover:bg-gray-600 focus:z-20 focus:outline-offset-0'
                             }`}
                           >
                             {pageNum}
@@ -322,7 +322,7 @@ export default function BirthdayList({ authContext }) {
                       <button
                         onClick={() => setCurrentPage(Math.min(pagination.pages, currentPage + 1))}
                         disabled={currentPage === pagination.pages}
-                        className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-600 bg-gray-700 hover:bg-gray-600 focus:z-20 focus:outline-offset-0 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         <span className="sr-only">Next</span>
                         <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -338,8 +338,8 @@ export default function BirthdayList({ authContext }) {
         ) : (
           <div className="text-center py-12">
             <div className="text-6xl mb-4">🎂</div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">No birthdays found</h3>
-            <p className="text-gray-600 mb-6">
+            <h3 className="text-lg font-medium text-white mb-2">No birthdays found</h3>
+            <p className="text-gray-300 mb-6">
               {searchTerm || relationshipFilter !== 'all' 
                 ? 'Try adjusting your search or filters'
                 : "You haven't added any birthdays yet"

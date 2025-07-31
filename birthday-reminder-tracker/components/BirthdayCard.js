@@ -23,11 +23,11 @@ export default function BirthdayCard({ birthday, onEdit, onDelete }) {
     const diffTime = thisYearBirthday - today
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
     
-    if (diffDays === 0) return { text: 'Today', color: 'bg-green-100 text-green-800' }
-    if (diffDays === 1) return { text: 'Tomorrow', color: 'bg-yellow-100 text-yellow-800' }
-    if (diffDays <= 7) return { text: `${diffDays} days`, color: 'bg-orange-100 text-orange-800' }
-    if (diffDays <= 30) return { text: `${diffDays} days`, color: 'bg-blue-100 text-blue-800' }
-    return { text: `${diffDays} days`, color: 'bg-gray-100 text-gray-800' }
+    if (diffDays === 0) return { text: 'Today', color: 'bg-green-900 text-green-300 border border-green-700' }
+    if (diffDays === 1) return { text: 'Tomorrow', color: 'bg-yellow-900 text-yellow-300 border border-yellow-700' }
+    if (diffDays <= 7) return { text: `${diffDays} days`, color: 'bg-orange-900 text-orange-300 border border-orange-700' }
+    if (diffDays <= 30) return { text: `${diffDays} days`, color: 'bg-blue-900 text-blue-300 border border-blue-700' }
+    return { text: `${diffDays} days`, color: 'bg-gray-700 text-gray-300 border border-gray-600' }
   }
 
   const getRelationshipIcon = (relationship) => {
@@ -43,11 +43,11 @@ export default function BirthdayCard({ birthday, onEdit, onDelete }) {
 
   const getRelationshipColor = (relationship) => {
     const colors = {
-      family: 'bg-red-100 text-red-800',
-      friend: 'bg-green-100 text-green-800',
-      colleague: 'bg-blue-100 text-blue-800',
-      acquaintance: 'bg-yellow-100 text-yellow-800',
-      other: 'bg-gray-100 text-gray-800'
+      family: 'bg-red-900 text-red-300 border border-red-700',
+      friend: 'bg-green-900 text-green-300 border border-green-700',
+      colleague: 'bg-blue-900 text-blue-300 border border-blue-700',
+      acquaintance: 'bg-yellow-900 text-yellow-300 border border-yellow-700',
+      other: 'bg-gray-700 text-gray-300 border border-gray-600'
     }
     return colors[relationship] || colors.other
   }
@@ -55,12 +55,12 @@ export default function BirthdayCard({ birthday, onEdit, onDelete }) {
   const daysUntil = getDaysUntil(birthday.dateOfBirth)
 
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden">
+    <div className="bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden border border-gray-700">
       {/* Header */}
       <div className="p-6 pb-4">
         <div className="flex items-start justify-between">
           <div className="flex-1">
-            <h3 className="text-lg font-semibold text-gray-900 mb-1">
+            <h3 className="text-lg font-semibold text-white mb-1">
               {birthday.name}
             </h3>
             <div className="flex items-center space-x-2 mb-2">
@@ -75,7 +75,7 @@ export default function BirthdayCard({ birthday, onEdit, onDelete }) {
           <div className="relative">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full"
+              className="p-2 text-gray-400 hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
@@ -84,14 +84,14 @@ export default function BirthdayCard({ birthday, onEdit, onDelete }) {
             
             {/* Dropdown Menu */}
             {isMenuOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 border border-gray-200">
+              <div className="absolute right-0 mt-2 w-48 bg-gray-700 rounded-md shadow-lg z-10 border border-gray-600">
                 <div className="py-1">
                   <button
                     onClick={() => {
                       setIsMenuOpen(false)
                       onEdit(birthday._id)
                     }}
-                    className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    className="flex items-center w-full px-4 py-2 text-sm text-gray-300 hover:bg-gray-600"
                   >
                     <svg className="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -103,7 +103,7 @@ export default function BirthdayCard({ birthday, onEdit, onDelete }) {
                       setIsMenuOpen(false)
                       onDelete(birthday._id)
                     }}
-                    className="flex items-center w-full px-4 py-2 text-sm text-red-700 hover:bg-red-50"
+                    className="flex items-center w-full px-4 py-2 text-sm text-red-400 hover:bg-red-900"
                   >
                     <svg className="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -121,14 +121,14 @@ export default function BirthdayCard({ birthday, onEdit, onDelete }) {
       <div className="px-6 pb-4">
         <div className="flex items-center justify-between mb-3">
           <div>
-            <p className="text-sm text-gray-600">Birthday</p>
-            <p className="text-lg font-medium text-gray-900">
+            <p className="text-sm text-gray-400">Birthday</p>
+            <p className="text-lg font-medium text-white">
               {formatDate(birthday.dateOfBirth)}
             </p>
           </div>
           <div className="text-right">
-            <p className="text-sm text-gray-600">Age</p>
-            <p className="text-lg font-medium text-gray-900">
+            <p className="text-sm text-gray-400">Age</p>
+            <p className="text-lg font-medium text-white">
               {birthday.age} → {birthday.age + 1}
             </p>
           </div>
@@ -136,7 +136,7 @@ export default function BirthdayCard({ birthday, onEdit, onDelete }) {
 
         {/* Days Until Birthday */}
         <div className="flex items-center justify-between">
-          <span className="text-sm text-gray-600">Next birthday:</span>
+          <span className="text-sm text-gray-400">Next birthday:</span>
           <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${daysUntil.color}`}>
             {daysUntil.text}
           </span>
@@ -145,12 +145,12 @@ export default function BirthdayCard({ birthday, onEdit, onDelete }) {
 
       {/* Contact Info */}
       {(birthday.email || birthday.phone) && (
-        <div className="px-6 pb-4 border-t border-gray-100 pt-4">
+        <div className="px-6 pb-4 border-t border-gray-700 pt-4">
           <div className="flex items-center space-x-4 text-sm">
             {birthday.email && (
               <a
                 href={`mailto:${birthday.email}`}
-                className="flex items-center text-blue-600 hover:text-blue-800"
+                className="flex items-center text-blue-400 hover:text-blue-300"
               >
                 <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -161,7 +161,7 @@ export default function BirthdayCard({ birthday, onEdit, onDelete }) {
             {birthday.phone && (
               <a
                 href={`tel:${birthday.phone}`}
-                className="flex items-center text-blue-600 hover:text-blue-800"
+                className="flex items-center text-blue-400 hover:text-blue-300"
               >
                 <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -175,8 +175,8 @@ export default function BirthdayCard({ birthday, onEdit, onDelete }) {
 
       {/* Gift Ideas Preview */}
       {birthday.giftIdeas && birthday.giftIdeas.length > 0 && (
-        <div className="px-6 pb-4 border-t border-gray-100 pt-4">
-          <div className="flex items-center text-sm text-gray-600">
+        <div className="px-6 pb-4 border-t border-gray-700 pt-4">
+          <div className="flex items-center text-sm text-gray-400">
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
             </svg>
@@ -187,8 +187,8 @@ export default function BirthdayCard({ birthday, onEdit, onDelete }) {
 
       {/* Notes Preview */}
       {birthday.notes && (
-        <div className="px-6 pb-6 border-t border-gray-100 pt-4">
-          <p className="text-sm text-gray-600 line-clamp-2">
+        <div className="px-6 pb-6 border-t border-gray-700 pt-4">
+          <p className="text-sm text-gray-400 line-clamp-2">
             {birthday.notes.length > 100 
               ? `${birthday.notes.substring(0, 100)}...` 
               : birthday.notes

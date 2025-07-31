@@ -506,6 +506,17 @@ a:hover {
   border-color: transparent;
 }
 
+/* Hover Background Colors */
+.hover\:bg-blue-100:hover {
+  background-color: #1e3a8a;
+  transition: background-color 0.2s ease;
+}
+
+.hover\:bg-blue-700:hover {
+  background-color: #1d4ed8;
+  transition: background-color 0.2s ease;
+}
+
 /* Buttons */
 .btn {
   display: inline-flex;
@@ -945,10 +956,12 @@ a:hover {
   background-color: #4b5563; 
   transition: background-color 0.2s ease;
 }
-.hover\:bg-blue-100:hover { 
+
+.hover\:bg-blue-100:hover {
   background-color: #1e3a8a; 
   transition: background-color 0.2s ease;
 }
+
 .hover\:bg-blue-700:hover { 
   background-color: #1d4ed8; 
   transition: background-color 0.2s ease;

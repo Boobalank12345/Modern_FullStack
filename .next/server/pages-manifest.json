@@ -1,0 +1,12 @@
+{
+  "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/dashboard": "pages/dashboard.js",
+  "/birthday-list": "pages/birthday-list.js",
+  "/api/birthdays/create": "pages/api/birthdays/create.js",
+  "/add-birthday": "pages/add-birthday.js",
+  "/api/birthdays": "pages/api/birthdays.js",
+  "/[id]": "pages/[id].js",
+  "/api/birthdays/[id]": "pages/api/birthdays/[id].js"
+}

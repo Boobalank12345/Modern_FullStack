@@ -1,0 +1,38 @@
+{
+  "name": "birthday-reminder-tracker",
+  "version": "1.0.0",
+  "description": "A birthday reminder and tracking application",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "date-fns": "^2.30.0",
+    "dotenv": "^17.2.1",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb": "^6.0.0",
+    "mongoose": "^8.0.0",
+    "next": "^14.0.0",
+    "next-auth": "^4.24.0",
+    "node-fetch": "^3.3.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^14.0.0"
+  },
+  "keywords": [
+    "birthday",
+    "reminder",
+    "tracker",
+    "nextjs",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "MIT"
+}
